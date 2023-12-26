@@ -90,6 +90,20 @@
             border-color: #555;
         }
 
+        #currentDisplay {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark-mode #currentDisplay {
+            background-color: #4CAF50;
+        }
+
     </style>
 </head>
 <body>
@@ -112,6 +126,10 @@
         <input type="range" id="volumeControl" min="0" max="100" value="100">
     </div>
 
+    <div id="currentDisplay">
+        <h2>Currently Playing: <span id="currentNumber">None</span></h2>
+    </div>
+
     <table id="statsTable">
         <tr>
             <th>Number</th>
@@ -122,23 +140,22 @@
     </table>
 
     <script>
-        // JavaScript Code
         var currentFileIndex = 0;
         var stats = [];
         var data = {}; // Object to hold items and naming convention
         var namingConvention = {};
         var delayAfterNumber = 5000; // Default delay time
-
+        
         var player = document.getElementById('audioPlayer');
         var statsTable = document.getElementById('statsTable');
-
+        
         // Load data from the JSON file
-        fetch('memorization_data.json').then(response => response.json()).then(json => {
+        fetch('path/to/memorization_data.json').then(response => response.json()).then(json => {
             data = json.items;
             namingConvention = json.namingConvention;
             initializeTable();
         });
-
+        
         function initializeTable() {
             for (let i = 0; i < data.length; i++) {
                 stats.push({ number: data[i].number, keyword: data[i].kwText, difficultCount: 0 });
@@ -148,35 +165,41 @@
                 row.insertCell(2).textContent = stats[i].difficultCount;
             }
         }
-
+        
         function getFilePath(template, number) {
             return template.replace('%d', number);
         }
-
+        
+        function updateCurrentNumberDisplay(number) {
+            document.getElementById('currentNumber').textContent = number || 'None';
+        }
+        
         document.getElementById('playNumber').addEventListener('click', function() {
             player.src = getFilePath(namingConvention.numberAudio, data[currentFileIndex].number);
             player.play();
+            updateCurrentNumberDisplay(data[currentFileIndex].number);
         });
-
+        
         document.getElementById('playFull').addEventListener('click', function() {
             player.src = getFilePath(namingConvention.fullAudio, data[currentFileIndex].number);
             player.play();
+            updateCurrentNumberDisplay('Full - ' + data[currentFileIndex].number);
         });
-
+        
         document.getElementById('next').addEventListener('click', function() {
             moveToNext();
         });
-
+        
         document.getElementById('difficult').addEventListener('click', function() {
             stats[currentFileIndex].difficultCount++;
             updateTable();
             moveToNext();
         });
-
+        
         document.getElementById('delayTime').addEventListener('change', function() {
             delayAfterNumber = this.value * 1000;
         });
-
+        
         document.getElementById('themeToggle').addEventListener('change', function() {
             if (this.checked) {
                 document.body.classList.add("dark-mode");
@@ -184,20 +207,22 @@
                 document.body.classList.remove("dark-mode");
             }
         });
-
+        
         document.getElementById('volumeControl').addEventListener('input', function() {
             player.volume = this.value / 100;
         });
-
+        
         function moveToNext() {
             currentFileIndex = (currentFileIndex + 1) % data.length;
             player.src = getFilePath(namingConvention.numberAudio, data[currentFileIndex].number);
             player.play();
+            updateCurrentNumberDisplay(data[currentFileIndex].number);
         }
-
+        
         function updateTable() {
             statsTable.rows[currentFileIndex + 1].cells[2].textContent = stats[currentFileIndex].difficultCount;
         }
+
     </script>
 
 </body>
