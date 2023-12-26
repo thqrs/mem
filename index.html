@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memorization Aid with Tracking and Customization</title>
+    <style>
+        /* CSS Styles */
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+        /* Additional styles */
+    </style>
+</head>
+<body>
+
+    <audio id="audioPlayer" controls></audio>
+
+    <button id="playNumber">Play Number</button>
+    <button id="playFull">Play Full</button>
+    <button id="next">Next</button>
+    <button id="difficult">Difficult</button>
+
+    <div id="customizationPanel">
+        <label for="delayTime">Delay Time (seconds):</label>
+        <input type="number" id="delayTime" value="5" min="1" max="10">
+
+        <label for="themeToggle">Dark Mode:</label>
+        <input type="checkbox" id="themeToggle">
+
+        <label for="volumeControl">Volume:</label>
+        <input type="range" id="volumeControl" min="0" max="100" value="100">
+    </div>
+
+    <table id="statsTable">
+        <tr>
+            <th>Number</th>
+            <th>Keyword</th>
+            <th>Difficult Count</th>
+        </tr>
+        <!-- Rows will be added dynamically -->
+    </table>
+
+    <script>
+        // JavaScript Code
+        var currentFileIndex = 0;
+        var stats = [];
+        var data = {}; // Object to hold items and naming convention
+        var namingConvention = {};
+        var delayAfterNumber = 5000; // Default delay time
+
+        var player = document.getElementById('audioPlayer');
+        var statsTable = document.getElementById('statsTable');
+
+        // Load data from the JSON file
+        fetch('path/to/data.json').then(response => response.json()).then(json => {
+            data = json.items;
+            namingConvention = json.namingConvention;
+            initializeTable();
+        });
+
+        function initializeTable() {
+            for (let i = 0; i < data.length; i++) {
+                stats.push({ number: data[i].number, keyword: data[i].kwText, difficultCount: 0 });
+                let row = statsTable.insertRow(-1);
+                row.insertCell(0).textContent = stats[i].number;
+                row.insertCell(1).textContent = stats[i].keyword;
+                row.insertCell(2).textContent = stats[i].difficultCount;
+            }
+        }
+
+        function getFilePath(template, number) {
+            return template.replace('%d', number);
+        }
+
+        document.getElementById('playNumber').addEventListener('click', function() {
+            player.src = getFilePath(namingConvention.numberAudio, data[currentFileIndex].number);
+            player.play();
+        });
+
+        document.getElementById('playFull').addEventListener('click', function() {
+            player.src = getFilePath(namingConvention.fullAudio, data[currentFileIndex].number);
+            player.play();
+        });
+
+        document.getElementById('next').addEventListener('click', function() {
+            moveToNext();
+        });
+
+        document.getElementById('difficult').addEventListener('click', function() {
+            stats[currentFileIndex].difficultCount++;
+            updateTable();
+            moveToNext();
+        });
+
+        document.getElementById('delayTime').addEventListener('change', function() {
+            delayAfterNumber = this.value * 1000;
+        });
+
+        document.getElementById('themeToggle').addEventListener('change', function() {
+            if (this.checked) {
+                document.body.classList.add("dark-mode");
+            } else {
+                document.body.classList.remove("dark-mode");
+            }
+        });
+
+        document.getElementById('volumeControl').addEventListener('input', function() {
+            player.volume = this.value / 100;
+        });
+
+        function moveToNext() {
+            currentFileIndex = (currentFileIndex + 1) % data.length;
+            player.src = getFilePath(namingConvention.numberAudio, data[currentFileIndex].number);
+            player.play();
+        }
+
+        function updateTable() {
+            statsTable.rows[currentFileIndex + 1].cells[2].textContent = stats[currentFileIndex].difficultCount;
+        }
+    </script>
+
+</body>
+</html>
