@@ -108,17 +108,25 @@
 </head>
 <body>
 
- <div id="audioButtons">
-    <audio id="audioPlayer" controls></audio>
-    <button id="prev">Previous</button>
-    <button id="playNumber">Play Number</button>
-    <button id="playFull">Play Full</button>
-    <button id="next">Next</button>
-    <button id="difficult">Difficult</button>
-</div>
-
-<canvas id="waveformCanvas" width="600" height="100"></canvas>
+     <div id="audioButtons">
+        <audio id="audioPlayer" controls></audio>
+        <button id="prev">Previous</button>
+        <button id="playNumber">Play Number</button>
+        <button id="playKW">Play KW</button>
+        <button id="playFull">Play Full</button>
+        <button id="difficult">Difficult</button>
+        <button id="next">Next</button>
+    </div>
     
+      <div id="autoplayControls">
+        <label><input type="checkbox" id="autoplayNumber" checked> Autoplay Number</label>
+        <label><input type="checkbox" id="autoplayKW" checked> Autoplay KW</label>
+        <label><input type="checkbox" id="autoplayFull" checked> Autoplay Full</label>
+        <button id="startAutoplay">Start Autoplay</button>
+    </div>
+    
+    <canvas id="waveformCanvas" width="600" height="100"></canvas>
+        
     <div id="customizationPanel">
         <label for="delayTime">Delay Time (seconds):</label>
         <input type="number" id="delayTime" value="5" min="1" max="10">
@@ -297,6 +305,51 @@
         drawWaveform();
         
         // ... existing JavaScript ...
+
+        
+        document.getElementById('playKW').addEventListener('click', function() {
+            player.src = getFilePath(namingConvention.kwAudio, data[currentFileIndex].number);
+            player.play();
+            updateCurrentNumberDisplay('KW - ' + data[currentFileIndex].number);
+        });
+        
+        var autoplayIndex = 0;
+        var autoplayOrder = [];
+        
+        document.getElementById('startAutoplay').addEventListener('click', function() {
+            autoplayIndex = 0;
+            createAutoplayOrder();
+            playAutoplaySequence();
+        });
+        
+        function createAutoplayOrder() {
+            autoplayOrder = [];
+            for (let i = 0; i < data.length; i++) {
+                if (document.getElementById('autoplayNumber').checked) {
+                    autoplayOrder.push(getFilePath(namingConvention.numberAudio, data[i].number));
+                }
+                if (document.getElementById('autoplayKW').checked) {
+                    autoplayOrder.push(getFilePath(namingConvention.kwAudio, data[i].number));
+                }
+                if (document.getElementById('autoplayFull').checked) {
+                    autoplayOrder.push(getFilePath(namingConvention.fullAudio, data[i].number));
+                }
+            }
+        }
+        
+        function playAutoplaySequence() {
+            if (autoplayIndex < autoplayOrder.length) {
+                player.src = autoplayOrder[autoplayIndex++];
+                player.play();
+            }
+        }
+        
+        player.addEventListener('ended', function() {
+            if (autoplayIndex < autoplayOrder.length) {
+                playAutoplaySequence();
+            }
+        });
+
 
 
     </script>
