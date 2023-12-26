@@ -52,7 +52,7 @@
         var statsTable = document.getElementById('statsTable');
 
         // Load data from the JSON file
-        fetch('path/to/data.json').then(response => response.json()).then(json => {
+        fetch('memorization_data.json').then(response => response.json()).then(json => {
             data = json.items;
             namingConvention = json.namingConvention;
             initializeTable();
