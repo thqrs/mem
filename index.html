@@ -192,7 +192,8 @@
         }
         
         function getFilePath(template, number) {
-            return template.replace('%d', number);
+            var formattedNumber = (number < 10) ? '-0' + number : '-' + number;
+            return template.replace('%d', formattedNumber);
         }
         
         function updateCurrentNumberDisplay(number) {
