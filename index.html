@@ -190,11 +190,12 @@
                 row.insertCell(2).textContent = stats[i].difficultCount;
             }
         }
-        
+
         function getFilePath(template, number) {
-            var formattedNumber = (number < 10) ? '-0' + number : '-' + number;
+            var formattedNumber = (number < 10) ? '0' + number : number;
             return template.replace('%d', formattedNumber);
         }
+
         
         function updateCurrentNumberDisplay(number) {
             document.getElementById('currentNumber').textContent = number || 'None';
