@@ -1,0 +1,39 @@
+{
+    "namingConvention": {
+        "numberAudio": "files/number_%d.mp3",
+        "kwAudio": "files/kw_%d.mp3",
+        "fullAudio": "files/full_%d.mp3"
+    },
+    "items": [
+        {"number": 1, "kwText": "keywords for 1"},
+        {"number": 2, "kwText": "keywords for 2"},
+        {"number": 3, "kwText": "keywords for 3"},
+        {"number": 4, "kwText": "keywords for 4"},
+        {"number": 5, "kwText": "keywords for 5"},
+        {"number": 6, "kwText": "keywords for 6"},
+        {"number": 7, "kwText": "keywords for 7"},
+        {"number": 8, "kwText": "keywords for 8"},
+        {"number": 9, "kwText": "keywords for 9"},
+        {"number": 10, "kwText": "keywords for 10"},
+        {"number": 11, "kwText": "keywords for 11"},
+        {"number": 12, "kwText": "keywords for 12"},
+        {"number": 13, "kwText": "keywords for 13"},
+        {"number": 14, "kwText": "keywords for 14"},
+        {"number": 15, "kwText": "keywords for 15"},
+        {"number": 16, "kwText": "keywords for 16"},
+        {"number": 17, "kwText": "keywords for 17"},
+        {"number": 18, "kwText": "keywords for 18"},
+        {"number": 19, "kwText": "keywords for 19"},
+        {"number": 20, "kwText": "keywords for 20"},
+        {"number": 21, "kwText": "keywords for 21"},
+        {"number": 22, "kwText": "keywords for 22"},
+        {"number": 23, "kwText": "keywords for 23"},
+        {"number": 24, "kwText": "keywords for 24"},
+        {"number": 25, "kwText": "keywords for 25"},
+        {"number": 26, "kwText": "keywords for 26"},
+        {"number": 27, "kwText": "keywords for 27"},
+        {"number": 28, "kwText": "keywords for 28"},
+        {"number": 29, "kwText": "keywords for 29"},
+        {"number": 30, "kwText": "keywords for 30"}
+    ]
+}
