@@ -116,6 +116,9 @@
     <button id="next">Next</button>
     <button id="difficult">Difficult</button>
 </div>
+
+<canvas id="waveformCanvas" width="600" height="100"></canvas>
+    
     <div id="customizationPanel">
         <label for="delayTime">Delay Time (seconds):</label>
         <input type="number" id="delayTime" value="5" min="1" max="10">
@@ -238,6 +241,63 @@
         function updateTable() {
             statsTable.rows[currentFileIndex + 1].cells[2].textContent = stats[currentFileIndex].difficultCount;
         }
+
+
+
+        // ... existing JavaScript ...
+
+        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        var sourceNode = audioCtx.createMediaElementSource(player);
+        var analyser = audioCtx.createAnalyser();
+        
+        sourceNode.connect(analyser);
+        analyser.connect(audioCtx.destination);
+        
+        analyser.fftSize = 2048;
+        var bufferLength = analyser.fftSize;
+        var dataArray = new Uint8Array(bufferLength);
+        
+        var canvas = document.getElementById("waveformCanvas");
+        var canvasCtx = canvas.getContext("2d");
+        
+        function drawWaveform() {
+            requestAnimationFrame(drawWaveform);
+        
+            analyser.getByteTimeDomainData(dataArray);
+        
+            canvasCtx.fillStyle = "rgb(255, 255, 255)";
+            canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+        
+            canvasCtx.lineWidth = 2;
+            canvasCtx.strokeStyle = "rgb(0, 0, 0)";
+        
+            canvasCtx.beginPath();
+        
+            var sliceWidth = canvas.width * 1.0 / bufferLength;
+            var x = 0;
+        
+            for(var i = 0; i < bufferLength; i++) {
+         
+                var v = dataArray[i] / 128.0;
+                var y = v * canvas.height / 2;
+        
+                if(i === 0) {
+                    canvasCtx.moveTo(x, y);
+                } else {
+                    canvasCtx.lineTo(x, y);
+                }
+        
+                x += sliceWidth;
+            }
+        
+            canvasCtx.lineTo(canvas.width, canvas.height / 2);
+            canvasCtx.stroke();
+        }
+        
+        drawWaveform();
+        
+        // ... existing JavaScript ...
+
 
     </script>
 
