@@ -12,7 +12,7 @@
             color: #333;
         }
         
-        #customizationPanel, #statsTable {
+        #customizationPanel, #statsTable, #audioButtons {
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
@@ -108,13 +108,14 @@
 </head>
 <body>
 
+ <div id="audioButtons">
     <audio id="audioPlayer" controls></audio>
-
+    <button id="prev">Previous</button>
     <button id="playNumber">Play Number</button>
     <button id="playFull">Play Full</button>
     <button id="next">Next</button>
     <button id="difficult">Difficult</button>
-
+</div>
     <div id="customizationPanel">
         <label for="delayTime">Delay Time (seconds):</label>
         <input type="number" id="delayTime" value="5" min="1" max="10">
@@ -211,6 +212,21 @@
         document.getElementById('volumeControl').addEventListener('input', function() {
             player.volume = this.value / 100;
         });
+
+        document.getElementById('prev').addEventListener('click', function() {
+            moveToPrevious();
+        });
+        
+        function moveToPrevious() {
+            if (currentFileIndex > 0) {
+                currentFileIndex--;
+            } else {
+                currentFileIndex = data.length - 1; // Loop back to the last item
+            }
+            player.src = getFilePath(namingConvention.numberAudio, data[currentFileIndex].number);
+            player.play();
+            updateCurrentNumberDisplay(data[currentFileIndex].number);
+        }
         
         function moveToNext() {
             currentFileIndex = (currentFileIndex + 1) % data.length;
