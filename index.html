@@ -317,9 +317,8 @@
         
         drawWaveform();
         
-        // ... existing JavaScript ...
+        // autoplay
 
-        
         document.getElementById('playKW').addEventListener('click', function() {
             player.src = getFilePath(namingConvention.kwAudio, data[currentFileIndex].number);
             player.play();
@@ -353,7 +352,10 @@
         function playAutoplaySequence() {
             if (autoplayIndex < autoplayOrder.length) {
                 player.src = autoplayOrder[autoplayIndex++];
-                player.play();
+                player.play().catch(error => {
+                    console.error("Error playing file: ", player.src, error);
+                    playAutoplaySequence();
+                });
             }
         }
         
@@ -362,6 +364,14 @@
                 playAutoplaySequence();
             }
         });
+        
+        player.addEventListener('error', function(e) {
+            console.error("Error loading file: ", player.src, e);
+            playAutoplaySequence();
+        });
+        
+        // ... existing JavaScript ...
+
 
 
 
