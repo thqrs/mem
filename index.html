@@ -12,13 +12,26 @@
             color: #333;
         }
         
-        #customizationPanel, #statsTable, #audioButtons, #waveformCanvas {
+        #customizationPanel, #statsTable, #audioButtons {
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
             background: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+
+        #waveformCanvas {
+            display: block; /* Ensures the canvas is a block-level element */
+            margin: 20px auto; /* Top and bottom margins of 20px, and auto left/right margins for centering */
+            width: 600px; /* Set a specific width for the canvas */
+            height: 100px; /* Height of the canvas */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for better visibility */
+        }
+
+
+
+
         
         audio {
             width: 100%;
@@ -125,7 +138,7 @@
         <button id="startAutoplay">Start Autoplay</button>
     </div>
     
-    <canvas id="waveformCanvas" width="600" height="100"></canvas>
+    <canvas id="waveformCanvas"></canvas>
         
     <div id="customizationPanel">
         <label for="delayTime">Delay Time (seconds):</label>
