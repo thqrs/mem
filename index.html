@@ -201,12 +201,37 @@
             document.getElementById('currentNumber').textContent = number || 'None';
         }
 
+        var audioCtx;
+        var sourceNode;
+        var analyser;
+        
+        function initAudioContext() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            sourceNode = audioCtx.createMediaElementSource(player);
+            analyser = audioCtx.createAnalyser();
+        
+            sourceNode.connect(analyser);
+            analyser.connect(audioCtx.destination);
+        
+            analyser.fftSize = 2048;
+            drawWaveform();
+        }
+        
+        document.getElementById('audioButtons').addEventListener('click', function() {
+            if (!audioCtx) {
+                initAudioContext();
+            }
+        });
+        
+        // ... rest of your code ...
+
         document.getElementById('playNumber').addEventListener('click', function() {
             if (audioCtx.state === 'suspended') {
                 audioCtx.resume();
             }
             // Rest of your code...
         });
+
         
         document.getElementById('playNumber').addEventListener('click', function() {
             player.src = getFilePath(namingConvention.numberAudio, data[currentFileIndex].number);
