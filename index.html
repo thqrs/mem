@@ -200,6 +200,13 @@
         function updateCurrentNumberDisplay(number) {
             document.getElementById('currentNumber').textContent = number || 'None';
         }
+
+        document.getElementById('playNumber').addEventListener('click', function() {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            // Rest of your code...
+        });
         
         document.getElementById('playNumber').addEventListener('click', function() {
             player.src = getFilePath(namingConvention.numberAudio, data[currentFileIndex].number);
