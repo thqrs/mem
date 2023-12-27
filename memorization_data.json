@@ -3,7 +3,7 @@
         "numberAudio": "files/number_-%d.mp3",
         "kwAudio": "files/kw_-%d.mp3",
         "fullAudio": "files/full_-%d.mp3"
-    }
+    },
     "items": [
         {"number": 1, "kwText": "keywords for 1"},
         {"number": 2, "kwText": "keywords for 2"},
