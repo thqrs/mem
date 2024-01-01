@@ -147,12 +147,14 @@
 
 
     </div>
- <div id="cookieButtons">
+    <div id="cookieButtons">
         <button id="readCookiesButton">Read Cookies</button>
         <button id="createCookiesButton">Create Cookie</button>
-         </div>
+         <button id="clearCookiesButton">Clear Cookies</button>
+
+    </div>
     
-      <div id="autoplayControls">
+    <div id="autoplayControls">
         <label><input type="checkbox" id="autoplayNumber" checked> Autoplay Number</label>
         <label><input type="checkbox" id="autoplayKW" checked> Autoplay KW</label>
         <label><input type="checkbox" id="autoplayFull" checked> Autoplay Full</label>
@@ -209,6 +211,27 @@
             });
             alert("Cookies created successfully!");
         }
+
+        function clearCookies() {
+            // Reset difficultCount values to 0 and update the table
+            stats.forEach((item, index) => {
+                item.difficultCount = 0;
+        
+                // Update the table cell
+                if (statsTable && statsTable.rows[index + 1]) {
+                    statsTable.rows[index + 1].cells[2].textContent = 0;
+                }
+            });
+        
+            // Call the existing save function
+           createCookies(); // Replace with your actual save function name
+        
+            // Update message display
+            document.getElementById('messageDisplay').textContent = "All difficult values reset and saved!";
+        }
+        
+        document.getElementById('clearCookiesButton').addEventListener('click', clearCookies);
+
         
         document.getElementById('createCookiesButton').addEventListener('click', createCookies);
 
