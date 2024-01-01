@@ -124,11 +124,14 @@
      <div id="audioButtons">
         <audio id="audioPlayer" controls></audio>
         <button id="prev">Previous</button>
+        <button id="next">Next</button>
         <button id="playNumber">Play Number</button>
         <button id="playKW">Play KW</button>
         <button id="playFull">Play Full</button>
         <button id="difficult">Difficult</button>
-        <button id="next">Next</button>
+        <button id="readCookiesButton">Read Cookies</button>
+        <button id="createCookiesButton">Create Cookie</button>
+
     </div>
     
       <div id="autoplayControls">
@@ -180,6 +183,45 @@
             namingConvention = json.namingConvention;
             initializeTable();
         });
+
+        function createCookies() {
+            stats.forEach(item => {
+                document.cookie = `difficultCount_${item.number}=${item.difficultCount};path=/`;
+            });
+            alert("Cookies created successfully!");
+        }
+        
+        document.getElementById('createCookiesButton').addEventListener('click', createCookies);
+
+            function readCookies() {
+                var cookies = document.cookie.split(';');
+                cookies.forEach(cookie => {
+                    var [key, value] = cookie.trim().split('=');
+                    if (key.startsWith('difficultCount_')) {
+                        var number = key.split('_')[1];
+                        var difficultCount = parseInt(value, 10);
+            
+                        // Update the stats array
+                        var stat = stats.find(stat => stat.number === number);
+                        if (stat) {
+                            stat.difficultCount = difficultCount;
+                        }
+            
+                        // Update the table cell
+                        var rows = statsTable.rows;
+                        for (let i = 1; i < rows.length; i++) {
+                            if (rows[i].cells[0].textContent === number) {
+                                rows[i].cells[2].textContent = difficultCount;
+                                break;
+                            }
+                        }
+                    }
+                });
+                alert("Cookies read and values updated!");
+            }
+            
+            document.getElementById('readCookiesButton').addEventListener('click', readCookies);
+
         
         function initializeTable() {
             for (let i = 0; i < data.length; i++) {
