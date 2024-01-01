@@ -20,6 +20,14 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
+        #cookieButtons {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
 
         #waveformCanvas {
             display: block; /* Ensures the canvas is a block-level element */
@@ -136,10 +144,13 @@
         <button id="playKW">Play KW</button>
         <button id="playFull">Play Full</button>
         <button id="difficult">Difficult</button>
-        <button id="readCookiesButton">Read Cookies</button>
-        <button id="createCookiesButton">Create Cookie</button>
+
 
     </div>
+ <div id="cookieButtons">
+        <button id="readCookiesButton">Read Cookies</button>
+        <button id="createCookiesButton">Create Cookie</button>
+         </div>
     
       <div id="autoplayControls">
         <label><input type="checkbox" id="autoplayNumber" checked> Autoplay Number</label>
