@@ -126,7 +126,7 @@
         }
 
         #messageDisplay {
-            color: green; /* or any color you prefer */
+            color: white; /* or any color you prefer */
             font-weight: bold;
             margin-top: 10px;
         }
@@ -231,7 +231,8 @@
             stats.forEach(item => {
                 document.cookie = `difficultCount_${item.number}=${item.difficultCount};path=/`;
             });
-            alert("Cookies created successfully!");
+         document.getElementById('messageDisplay').textContent = "Cookies saved!";
+
         }
 
         function clearCookies() {
@@ -252,8 +253,7 @@
             document.getElementById('messageDisplay').textContent = "All difficult values reset and saved!";
         }
         
-        document.getElementById('clearCookiesButton').addEventListener('click', clearCookies);
-
+        document.getElementById('clearCookiesButton').addEventListener('click', clearCookies);    
         
         document.getElementById('createCookiesButton').addEventListener('click', createCookies);
 
