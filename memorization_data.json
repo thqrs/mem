@@ -5,46 +5,161 @@
         "fullAudio": "files/full_-%d.mp3"
     },
     "items": [
-        {"number": 1, "kwText": "Hoje em dia, milhares de milhões de pessoas. João 17:3."},
-        {"number": 2, "kwText": "Vida eterna é maravilhosa"},
-        {"number": 3, "kwText": "Será que a vida eterna é automática? Um alerta"},
-        {"number": 4, "kwText": "Aviso de Jesus: Mateus, capítulo 7, versículo 21 a 23"},
-        {"number": 5, "kwText": "Conhecer é diferente de fazer a vontade. Explicar o texto"},
-        {"number": 6, "kwText": "2 grupos"},
-        {"number": 7, "kwText": "Exemplo demônios, Tiago 2:19"},
-        {"number": 8, "kwText": "Samaritana"},
-        {"number": 9, "kwText": "A Mudança da samaritana"},
-        {"number": 10, "kwText": "Como podemos estar no grupo certo? 4 passos."},
-        {"number": 11, "kwText": "Primeiro passo: Aprender sobre Jeová"},
-        {"number": 12, "kwText": "Algumas pessoas estudam, mas são como os demônios."},
-        {"number": 13, "kwText": "Algumas pessoas são como a Samaritana. Nós queremos ser assim."},
-        {"number": 14, "kwText": "Ler a Bíblia não chega, temos de meditar."},
-        {"number": 15, "kwText": "Meditar significa: ler, parar e fazer perguntas."},
-        {"number": 16, "kwText": "Exemplo: ler e meditar sobre o dilúvio"},
-        {"number": 17, "kwText": "Perguntas para meditar sobre o dilúvio"},
-        {"number": 18, "kwText": "Segundo passo: fazer um esforço para imitar Jeová ao tomar decisões"},
-        {"number": 19, "kwText": "Terceiro passo: conversar com Jeová"},
-        {"number": 20, "kwText": "Ilustração: falar com alguém no Brasil"},
-        {"number": 21, "kwText": "Ilustração: pedir ao amigo para lhe enviar uma encomenda"},
-        {"number": 22, "kwText": "Comparação com Jeová"},
-        {"number": 23, "kwText": "O que isso nos ensina sobre Jeová?"},
-        {"number": 24, "kwText": "Quarto passo: conhecer Jeová envolve uma amizade"},
-        {"number": 25, "kwText": "Ilustração: Psicólogo ouve e dá conselhos, mas não nos convida para comer com ele e com a família."},
-        {"number": 26, "kwText": "Comparar Jeová com o psicólogo usando Tiago 4:8"},
-        {"number": 27, "kwText": "Ser conhecido no céu como amigo de Jeová"},
-        {"number": 28, "kwText": "Amigos de Jeová vão ter vida eterna"},
-        {"number": 29, "kwText": "Como sabemos se somos amigos de Jeová? 1 João 2:4"},
-        {"number": 30, "kwText": "Quem é mentiroso?"},
-        {"number": 31, "kwText": "Vida familiar"},
-        {"number": 32, "kwText": "Quando o casamento corre mal"},
-        {"number": 33, "kwText": "Filhos têm de ser obedientes."},
-        {"number": 34, "kwText": "Amizades. Salmo 15:1, 2."},
-        {"number": 35, "kwText": "Escolha de diversão"},
-        {"number": 36, "kwText": "Ilustração: ancião entra em sua casa de surpresa."},
-        {"number": 37, "kwText": "2 Crônicas 16:9. Ilustração da rua"},
-        {"number": 38, "kwText": "Ilustração: Esta também é a sua rua"},
-        {"number": 39, "kwText": "O que vai acontecer aos amigos de Jeová?"}
-]
+        {
+            "number": 1,
+            "kwText": "Hoje em dia, milhares de milhões de pessoas. João 17:3."
+        },
+        {
+            "number": 2,
+            "kwText": "Vida eterna é maravilhosa"
+        },
+        {
+            "number": 3,
+            "kwText": "Será que a vida eterna é automática? Um alerta"
+        },
+        {
+            "number": 4,
+            "kwText": "Aviso de Jesus: Mateus, capítulo 7, versículo 21 a 23"
+        },
+        {
+            "number": 5,
+            "kwText": "Conhecer é diferente de fazer a vontade. Explicar o texto"
+        },
+        {
+            "number": 6,
+            "kwText": "2 grupos"
+        },
+        {
+            "number": 7,
+            "kwText": "Exemplo demônios, Tiago 2:19"
+        },
+        {
+            "number": 8,
+            "kwText": "Samaritana"
+        },
+        {
+            "number": 9,
+            "kwText": "A Mudança da samaritana"
+        },
+        {
+            "number": 10,
+            "kwText": "Como podemos estar no grupo certo? 4 passos."
+        },
+        {
+            "number": 11,
+            "kwText": "Primeiro passo: Aprender sobre Jeová"
+        },
+        {
+            "number": 12,
+            "kwText": "Algumas pessoas estudam, mas são como os demônios."
+        },
+        {
+            "number": 13,
+            "kwText": "Algumas pessoas são como a Samaritana. Nós queremos ser assim."
+        },
+        {
+            "number": 14,
+            "kwText": "Ler a Bíblia não chega, temos de meditar."
+        },
+        {
+            "number": 15,
+            "kwText": "Meditar significa: ler, parar e fazer perguntas."
+        },
+        {
+            "number": 16,
+            "kwText": "Exemplo: ler e meditar sobre o dilúvio"
+        },
+        {
+            "number": 17,
+            "kwText": "Perguntas para meditar sobre o dilúvio"
+        },
+        {
+            "number": 18,
+            "kwText": "Segundo passo: fazer um esforço para imitar Jeová ao tomar decisões"
+        },
+        {
+            "number": 19,
+            "kwText": "Terceiro passo: conversar com Jeová"
+        },
+        {
+            "number": 20,
+            "kwText": "Ilustração: falar com alguém no Brasil"
+        },
+        {
+            "number": 21,
+            "kwText": "Ilustração: pedir ao amigo para lhe enviar uma encomenda"
+        },
+        {
+            "number": 22,
+            "kwText": "Comparação com Jeová"
+        },
+        {
+            "number": 23,
+            "kwText": "O que isso nos ensina sobre Jeová?"
+        },
+        {
+            "number": 24,
+            "kwText": "Quarto passo: conhecer Jeová envolve uma amizade"
+        },
+        {
+            "number": 25,
+            "kwText": "Ilustração: Psicólogo ouve e dá conselhos, mas não nos convida para comer com ele e com a família."
+        },
+        {
+            "number": 26,
+            "kwText": "Comparar Jeová com o psicólogo usando Tiago 4:8"
+        },
+        {
+            "number": 27,
+            "kwText": "Ser conhecido no céu como amigo de Jeová"
+        },
+        {
+            "number": 28,
+            "kwText": "Amigos de Jeová vão ter vida eterna"
+        },
+        {
+            "number": 29,
+            "kwText": "Como sabemos se somos amigos de Jeová? 1 João 2:4"
+        },
+        {
+            "number": 30,
+            "kwText": "Quem é mentiroso?"
+        },
+        {
+            "number": 31,
+            "kwText": "Vida familiar"
+        },
+        {
+            "number": 32,
+            "kwText": "Quando o casamento corre mal"
+        },
+        {
+            "number": 33,
+            "kwText": "Filhos têm de ser obedientes."
+        },
+        {
+            "number": 34,
+            "kwText": "Amizades. Salmo 15:1, 2."
+        },
+        {
+            "number": 35,
+            "kwText": "Escolha de diversão"
+        },
+        {
+            "number": 36,
+            "kwText": "Ilustração: ancião entra em sua casa de surpresa."
+        },
+        {
+            "number": 37,
+            "kwText": "2 Crônicas 16:9. Ilustração da rua"
+        },
+        {
+            "number": 38,
+            "kwText": "Ilustração: Esta também é a sua rua"
+        },
+        {
+            "number": 39,
+            "kwText": "O que vai acontecer aos amigos de Jeová?"
+        }
+    ]
 }
-
-
