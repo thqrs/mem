@@ -368,6 +368,7 @@
         document.getElementById('difficult').addEventListener('click', function() {
             stats[currentFileIndex].difficultCount++;
             updateTable();
+            createCookies()
             moveToNext();
         });
         
