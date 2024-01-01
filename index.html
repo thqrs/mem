@@ -347,6 +347,28 @@
             }
             // Rest of your code...
         });
+        
+        document.getElementById('playFull').addEventListener('click', function() {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            // Rest of your code...
+        });
+        
+        document.getElementById('playKw').addEventListener('click', function() {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            // Rest of your code...
+        });
+
+                document.getElementById('startAutoplay').addEventListener('click', function() {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            // Rest of your code...
+        });
+
 
         
         document.getElementById('playNumber').addEventListener('click', function() {
