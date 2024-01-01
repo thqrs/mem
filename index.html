@@ -117,6 +117,13 @@
             background-color: #4CAF50;
         }
 
+        #messageDisplay {
+            color: green; /* or any color you prefer */
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+
     </style>
 </head>
 <body>
@@ -156,6 +163,7 @@
 
     <div id="currentDisplay">
         <h2>Currently Playing: <span id="currentNumber">None</span></h2>
+        <p id="messageDisplay"></p>
     </div>
 
     <table id="statsTable">
@@ -193,34 +201,40 @@
         
         document.getElementById('createCookiesButton').addEventListener('click', createCookies);
 
-            function readCookies() {
-                var cookies = document.cookie.split(';');
-                cookies.forEach(cookie => {
-                    var [key, value] = cookie.trim().split('=');
-                    if (key.startsWith('difficultCount_')) {
-                        var number = key.split('_')[1];
-                        var difficultCount = parseInt(value, 10);
-            
-                        // Update the stats array
-                        var stat = stats.find(stat => stat.number === number);
-                        if (stat) {
-                            stat.difficultCount = difficultCount;
-                        }
-            
-                        // Update the table cell
-                        var rows = statsTable.rows;
-                        for (let i = 1; i < rows.length; i++) {
-                            if (rows[i].cells[0].textContent === number) {
-                                rows[i].cells[2].textContent = difficultCount;
-                                break;
-                            }
+       function readCookies() {
+            var cookies = document.cookie.split(';');
+            var message = ''; // Variable to hold your message
+        
+            cookies.forEach(cookie => {
+                var [key, value] = cookie.trim().split('=');
+                if (key.startsWith('difficultCount_')) {
+                    var number = key.split('_')[1];
+                    var difficultCount = parseInt(value, 10);
+        
+                    // Update the stats array
+                    var stat = stats.find(stat => stat.number === number);
+                    if (stat) {
+                        stat.difficultCount = difficultCount;
+                    }
+        
+                    // Update the table cell
+                    var rows = statsTable.rows;
+                    for (let i = 1; i < rows.length; i++) {
+                        if (rows[i].cells[0].textContent === number) {
+                            rows[i].cells[2].textContent = difficultCount;
+                            break;
                         }
                     }
-                });
-                alert("Cookies read and values updated!");
-            }
-            
-            document.getElementById('readCookiesButton').addEventListener('click', readCookies);
+                }
+            });
+        
+            // Set the message
+            message = "Cookies read and values updated!";
+            document.getElementById('messageDisplay').textContent = message;
+        }
+        
+        document.getElementById('readCookiesButton').addEventListener('click', readCookies);
+
 
         
         function initializeTable() {
