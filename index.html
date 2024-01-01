@@ -309,8 +309,12 @@
         }
 
         
-        function updateCurrentNumberDisplay(number) {
-            document.getElementById('currentNumber').textContent = number || 'None';
+        function updateCurrentNumberDisplay(index) {
+            var displayText = 'None';
+            if (data[index]) {
+                displayText = 'Number: ' + data[index].number + ', KW: ' + data[index].kwText;
+            }
+            document.getElementById('currentNumber').textContent = displayText;
         }
 
         var audioCtx;
