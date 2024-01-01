@@ -150,7 +150,9 @@
     <div id="cookieButtons">
         <button id="readCookiesButton">Read Cookies</button>
         <button id="createCookiesButton">Create Cookie</button>
-         <button id="clearCookiesButton">Clear Cookies</button>
+        <button id="clearCookiesButton">Clear Cookies</button>
+        <button id="playRandom">Play Random</button>
+
 
     </div>
     
@@ -189,6 +191,8 @@
     </table>
 
     <script>
+        var totalItems = 0;
+
         var currentFileIndex = 0;
         var stats = [];
         var data = {}; // Object to hold items and naming convention
@@ -202,8 +206,26 @@
         fetch('memorization_data.json').then(response => response.json()).then(json => {
             data = json.items;
             namingConvention = json.namingConvention;
+            totalItems = data.length; // Update the total number of items
             initializeTable();
         });
+
+
+        document.getElementById('playRandom').addEventListener('click', function() {
+            if (totalItems > 0) {
+                var randomNumber = getRandomNumber(1, totalItems);
+                player.src = getFilePath(namingConvention.numberAudio, data[randomNumber - 1].number);
+                player.play();
+                updateCurrentNumberDisplay(data[randomNumber - 1].number);
+            } else {
+                console.log("No data available to play random audio");
+            }
+        });
+        
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
 
         function createCookies() {
             stats.forEach(item => {
