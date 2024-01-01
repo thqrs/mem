@@ -374,13 +374,14 @@
         document.getElementById('playNumber').addEventListener('click', function() {
             player.src = getFilePath(namingConvention.numberAudio, data[currentFileIndex].number);
             player.play();
-            updateCurrentNumberDisplay(data[currentFileIndex].number);
+           updateCurrentNumberDisplay('Number - ' + data[currentFileIndex].number);
         });
         
         document.getElementById('playFull').addEventListener('click', function() {
             player.src = getFilePath(namingConvention.fullAudio, data[currentFileIndex].number);
             player.play();
             updateCurrentNumberDisplay('Full - ' + data[currentFileIndex].number);
+
         });
         
         document.getElementById('next').addEventListener('click', function() {
@@ -505,6 +506,7 @@
             autoplayIndex = 0;
             createAutoplayOrder();
             playAutoplaySequence();
+            updateCurrentNumberDisplay('KW - ' + data[currentFileIndex].number);
         });
         
         function createAutoplayOrder() {
