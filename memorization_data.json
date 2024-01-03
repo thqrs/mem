@@ -1,7 +1,7 @@
 {
     "namingConvention": {
-        "numberAudio": "files/number_-%d.mp3",
-        "kwAudio": "files/kw_-%d.mp3",
+        "numberAudio": "files/%d.mp3",
+        "kwAudio": "files/kw-%d.mp3",
         "fullAudio": "files/full_-%d.mp3"
     },
     "items": [
