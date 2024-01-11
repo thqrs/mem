@@ -313,12 +313,15 @@
 
         
         function updateCurrentNumberDisplay(index) {
+            var adjustedIndex = index - 1;  // Subtract 1 from the index
             var displayText = 'None';
-            if (data[index]) {
-                displayText = 'Number: ' + data[index].number + ', KW: ' + data[index].kwText;
+        
+            if (data[adjustedIndex]) {
+                displayText = 'Number: ' + data[adjustedIndex].number + ', KW: ' + data[adjustedIndex].kwText;
             }
             document.getElementById('currentNumber').textContent = displayText;
         }
+
 
         var audioCtx;
         var sourceNode;
