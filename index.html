@@ -214,21 +214,43 @@
         });
 
 /*
+         function createRandomPlaylist(index) {
+            var randomPlaylist = [];
+            if (document.getElementById('autoplayNumber').checked) {
+                randomPlaylist.push(getFilePath(namingConvention.numberAudio, data[index].number));
+            }
+            if (document.getElementById('autoplayKW').checked) {
+                randomPlaylist.push(getFilePath(namingConvention.kwAudio, data[index].number));
+            }
+            if (document.getElementById('autoplayFull').checked) {
+                randomPlaylist.push(getFilePath(namingConvention.fullAudio, data[index].number));
+            }
+            return randomPlaylist;
+        }
+        
         document.getElementById('playRandom').addEventListener('click', function() {
             if (totalItems > 0) {
-                var randomNumber = getRandomNumber(1, totalItems);
-                player.src = getFilePath(namingConvention.numberAudio, data[randomNumber - 1].number);
-                player.play();
-                updateCurrentNumberDisplay(data[randomNumber - 1].number);
+                var randomNumber = getRandomNumber(1, totalItems) - 1; // Adjusted for 0-based index
+                currentFileIndex = randomNumber;
+                var randomPlaylist = createRandomPlaylist(randomNumber);
+                if (randomPlaylist.length > 0) {
+                    player.src = randomPlaylist[0];
+                    player.play();
+                    updateCurrentNumberDisplay(data[randomNumber].number);
+                } else {
+                    console.log("No files selected to play");
+                }
             } else {
                 console.log("No data available to play random audio");
             }
         });
-        
+
+        */
+            
         function getRandomNumber(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
-*/
+
         document.getElementById('playRandom').addEventListener('click', function() {
             if (totalItems > 0) {
                 var randomNumber = getRandomNumber(1, totalItems);
