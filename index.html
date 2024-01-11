@@ -213,7 +213,7 @@
             initializeTable();
         });
 
-
+/*
         document.getElementById('playRandom').addEventListener('click', function() {
             if (totalItems > 0) {
                 var randomNumber = getRandomNumber(1, totalItems);
@@ -228,6 +228,18 @@
         function getRandomNumber(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
+*/
+        document.getElementById('playRandom').addEventListener('click', function() {
+            if (totalItems > 0) {
+                var randomNumber = getRandomNumber(1, totalItems);
+                currentFileIndex = randomNumber - 1; // Update currentFileIndex
+                player.src = getFilePath(namingConvention.numberAudio, data[currentFileIndex].number);
+                player.play();
+                updateCurrentNumberDisplay(data[currentFileIndex].number);
+            } else {
+                console.log("No data available to play random audio");
+            }
+        });
 
 
         function createCookies() {
